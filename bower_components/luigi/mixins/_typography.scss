@@ -1,0 +1,54 @@
+@mixin font($type) {
+	@if $type == hell {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300;
+	} @else if $type == sans {
+		font-family: Arial,"Helvetica Neue", Helvetica, sans-serif;
+	} @else if $type == serif {
+		font-family: "Georgia", "Times New Roman", Times, sans-serif;
+	} @else if $type == monospace {
+		font-family: "Monaco", "Courier New", monospace;
+	}
+
+}
+
+@mixin font-face($font-name, $file, $svg-font-name: false, $weight: 100, $style: normal) {
+	@font-face {
+		$fonts: url('#{$file}.eot?#iefix') format('embedded-opentype'), url('#{$file}.woff') format('woff'), url('#{$file}.ttf')  format('truetype');
+		@if($svg-font-name) {
+			$fonts: $fonts, url('#{$file}.svg##{$svg-font-name}') format('svg');
+		}
+
+		font-family: quote($font-name);
+		src: url('#{$file}.eot');
+		src: $fonts;
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin font-optimize($kerning: 0, $rendering: optimizeLegibility){
+	letter-spacing: $kerning;
+	text-rendering: $rendering;
+}
+
+@function calculate-rem($size) {
+	$rem-size: $size / 16px;
+	@return #{$rem-size}rem;
+}
+@mixin font-size($size) {
+	font-size: $size; //Fallback in px
+	font-size: calculate-rem($size);
+}
+
+@mixin hide-text {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+}
+
+@mixin truncate-text($overflow: ellipsis){
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}

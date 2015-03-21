@@ -1,0 +1,45 @@
+@mixin class($class) {
+	[class*="#{$class}"] {
+		@content;
+	}
+}
+
+%clearfix {
+	zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+.clearfix {
+	@extend %clearfix;
+}
+
+%reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+}
+.reset {
+	@extend %reset;
+}
+
+%secret-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.secret-list {
+	@extend %secret-list;
+}
+
+%unselectable{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none; 
+}

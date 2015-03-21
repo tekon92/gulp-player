@@ -1,0 +1,7 @@
+@mixin placeholder {
+	@each $vendor in $vendors-placeholder {
+		&:#{$vendor}-input-placeholder {
+			@content;
+		}
+	}
+}

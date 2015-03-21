@@ -1,0 +1,11 @@
+{
+  "name": "bozboz",
+  "dependencies": {
+    "luigi": "*",
+    "susy": "*",
+    "normalize.scss": "~3.0.2+normalize.3.0.2",
+    "bourbon": "~4.2.0",
+    "neat": "~1.7.1",
+    "bitters": "~1.0.0"
+  }
+}
